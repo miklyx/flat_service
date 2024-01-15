@@ -8,5 +8,9 @@ async def refresh_flats_route():
     await refresh_flats()
     return 'Refreshed'
 
+@app.route("/")
+async def dummy():
+    return "Refresh service"
+
 if __name__ == "__main__":
     app.run(debug=False)

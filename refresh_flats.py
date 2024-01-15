@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 #from telethon.sessions import StringSession
 
 #from database import asyncpg, create_table_messages24, create_table_last24, insert_message, update_last_message_id, get_last_message_id, init_last_message 
-#from database_service import insert_into_postgres, insert_into_redis, init_pg, init_redis, insert_into_redis_sorted
+from database_service import insert_into_postgres, insert_into_redis, init_pg, init_redis, insert_into_redis_sorted
 
 from telegram_client import telegram_client
 from telegram_service import read_channel
