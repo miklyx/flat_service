@@ -18,7 +18,7 @@ ENV REDIS_HOST=$REDIS_HOST
 ENV REDIS_PWD=$REDIS_PWD
 
 EXPOSE 8080
-WORKDIR /py_service
+WORKDIR /flat_service
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY . .
