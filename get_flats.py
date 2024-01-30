@@ -10,7 +10,7 @@ async def get_flats():
       #data = res.decode('utf-8')
       data = json.dumps(res)
       #print(data.replace("\\u00",""))
-      result = map(lambda el: el.replace("\\u00",""))
+      result = map(lambda el: el.replace("\\u00",""), data)
       print(result)
       return result
   except Exception as e:
