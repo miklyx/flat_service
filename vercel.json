@@ -1,0 +1,5 @@
+{
+  "framework": "quart",
+  "entrypoint": "app.py",
+  "python_version": "3.9"
+}
