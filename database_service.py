@@ -71,4 +71,4 @@ async def init_redis():
 
 async def get_from_redis(redis, sorted_set_key):
     res = redis.zrange(sorted_set_key, 0, -1)
-    return [x.decode('utf-8') for x in res]
+    return [x.decode('utf_8', 'replace') for x in res]
