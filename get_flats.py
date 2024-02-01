@@ -15,7 +15,7 @@ async def get_flats():
       #cleaner = remove_backslashes(data)
       #print(json.loads(data))
       #print(data.replace("\\u00",""))
-      result = data
+      result = json.loads(data)
       #print(result)
       #result = map(lambda el: el.replace('\',''), data)
       #print(result)

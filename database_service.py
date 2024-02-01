@@ -41,8 +41,8 @@ async def insert_into_redis(redis, list, flat):
       redis.srem(list, redis.spop(list))
 
 async def insert_into_redis_sorted(redis, sorted_set_key, flat):
-    print(sorted_set_key)
-    print(flat)
+    #print(sorted_set_key)
+    #print(flat)
     redis.zadd(sorted_set_key, {json.dumps(flat):flat['message_id']})
     if len(redis.zrange(sorted_set_key, 0, -1)) > 40:
       oldest_element = redis.zrange(sorted_set_key, 0, 0, withscores=True)
@@ -71,4 +71,5 @@ async def init_redis():
 
 async def get_from_redis(redis, sorted_set_key):
     res = redis.zrange(sorted_set_key, 0, -1)
-    return [x.decode('utf_8', 'replace') for x in res]
+    data = [json.loads(x.decode('utf-8')) for x in res]
+    return data
