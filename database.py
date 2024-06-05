@@ -1,5 +1,6 @@
 import asyncpg
 
+
 async def create_table_messages24(connection):
     query = """
     CREATE TABLE IF NOT EXISTS messages24 (
@@ -22,6 +23,7 @@ async def create_table_messages24(connection):
     """
     await connection.execute(query)
 
+
 async def create_table_last24(connection):
     query = """
     CREATE TABLE IF NOT EXISTS last_message24 (
@@ -31,8 +33,25 @@ async def create_table_last24(connection):
     );
     """
     await connection.execute(query)
-    
-async def insert_message(connection, id,img,url,title,prc,sz,rm,addr,crw,fr,to,imgs,totprc,add_dt):
+
+
+async def insert_message(
+    connection,
+    id,
+    img,
+    url,
+    title,
+    prc,
+    sz,
+    rm,
+    addr,
+    crw,
+    fr,
+    to,
+    imgs,
+    totprc,
+    add_dt,
+):
     query = """
       INSERT INTO messages24 (
       
@@ -53,13 +72,17 @@ async def insert_message(connection, id,img,url,title,prc,sz,rm,addr,crw,fr,to,i
     ) VALUES (
       $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14);
     """
-    await connection.execute(query, id,img,url,title,prc,sz,rm,addr,crw,fr,to,imgs,totprc,add_dt)
+    await connection.execute(
+        query, id, img, url, title, prc, sz, rm, addr, crw, fr, to, imgs, totprc, add_dt
+    )
+
 
 async def get_last_message_id(connection, channel):
     query = "SELECT message_id FROM last_message24 where channel=$1;"
     result = await connection.fetchval(query, channel)
-    #result = await connection.execute(query, channel)
+    # result = await connection.execute(query, channel)
     return result if result is not None else 0
+
 
 async def update_last_message_id(connection, message_id, channel):
     query = """
@@ -68,6 +91,7 @@ async def update_last_message_id(connection, message_id, channel):
         where channel = $2;
     """
     await connection.execute(query, message_id, channel)
+
 
 async def init_last_message(connection, channel):
     query = """
