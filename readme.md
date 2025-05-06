@@ -24,6 +24,13 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
+## Deployed to
+
+https://flat-service-w52m.onrender.com/
+
+/refresh_flats - refreshes flats
+/flats - shows current flats
+
 ## API Documentation
 
 Access the API documentation at:
